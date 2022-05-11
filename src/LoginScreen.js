@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import styled from 'styled-components';
-
+import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 
 
@@ -13,13 +13,16 @@ export default function LoginScreen() {
       <h1>Flex Shoes</h1>
       <input
         type={'text'}
-        placeholder={'login'}
+        placeholder={'Login'}
       />
       <input
-        type={'text'}
-        placeholder={'senha'}
+        type={'password'}
+        placeholder={'Senha'}
       />
-      <button><p>Entrar</p></button>
+      <button>
+        <p>Entrar</p>
+      </button>
+
     </Container>
   )
 }
@@ -33,6 +36,7 @@ const Container = styled.div`
   height: 100vh;
   h1{
     font-size: 45px;
+    font-family: var(--logoFont);
   }
   img{
     width: 100px;
@@ -46,9 +50,13 @@ const Container = styled.div`
     width: 250px;
     height: 26px;
     border-radius: 8px;
+    font-family: var(--primaryFont);
   }
   input:focus {
     outline: 0;
+  }
+  input::placeholder{
+    font-family: var(--primaryFont)
   }
   button{
     border: none;
@@ -60,6 +68,9 @@ const Container = styled.div`
     align-items: center;
     transition: .2s;
     cursor: pointer;
+  }
+  button p{
+    font-family: var(--primaryFont)
   }
   button:hover{
     transform: scale(1.05);
