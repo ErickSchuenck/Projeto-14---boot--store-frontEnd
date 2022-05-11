@@ -1,11 +1,20 @@
+*{
+  overflow-x: hidden;
+}
 body {
   margin: 0;
   padding: 0;
   background-color: #E6E7E9;
-  
   user-select: none;
+  width: 100vw;
+  box-sizing: border-box;
+  
 }
 
+#root{
+  width: 100vw;
+  height: 100vh;
+}
 :root{
   --logoFont: 'Staatliches', cursive;
   --primaryFont: 'Roboto Condensed', sans-serif;
@@ -17,3 +26,6 @@ a:link {
   text-decoration: none;
   color: var(--secondaryColor);
 }
+/* ::-webkit-scrollbar {
+  display: none;
+} */
