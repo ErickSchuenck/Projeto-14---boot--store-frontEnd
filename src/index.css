@@ -11,5 +11,9 @@ body {
   --primaryFont: 'Roboto Condensed', sans-serif;
   --highlightColor: #f3dec7;
   --highlightColorDarker: #9e8468;
-  --fundo: white;
+  --fundo: rgb(252, 252, 252);
+}
+a:link {
+  text-decoration: none;
+  color: var(--secondaryColor);
 }

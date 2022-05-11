@@ -5,50 +5,87 @@ import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 
 
+
 export default function LoginScreen() {
 
+  // consts
   const [hidePassword, setHidePassword] = useState(true)
+  const [loading, setLoading] = useState(false)
 
-  return (
-    <Container>
-      <img
-        src='./assets/logo-without-background.png' alt='logo' />
-      <h1>Flex Shoes</h1>
-      <input
-        type={'text'}
-        placeholder={'Login'}
-      />
-      <input
-        type={hidePassword ? 'password' : 'text'}
-        placeholder={'Senha'}
-      />
-      <button>
-        <p>Entrar</p>
-      </button>
-      {
-        hidePassword ?
-          <div className='show-and-hide-password' onClick={() => setHidePassword(!hidePassword)} >
-            <ion-icon name="eye-outline" />
-            <p >
+  //functions
 
-              Show password
-            </p>
+  function enterApp() {
+    console.log('entrou')
+    setLoading(true)
+    // cógigos para enviar o axios
+  }
+
+  // componentes principais
+  if (loading === false) {
+    return (
+      <Container>
+        <img
+          src='./assets/logo-without-background.png'
+          alt='logo'
+        />
+        <h1>Flex Shoes</h1>
+        <input
+          type={'text'}
+          placeholder={'Nome'}
+        />
+        <input
+          type={'text'}
+          placeholder={'Email'}
+        />
+        <input
+          type={hidePassword ? 'password' : 'text'}
+          placeholder={'Senha'}
+        />
+        <input
+          type={hidePassword ? 'password' : 'text'}
+          placeholder={'Confirme a Senha'}
+        />
+        <button onClick={() => enterApp()}>
+          <p>Registrar</p>
+        </button>
+        {
+          hidePassword ?
+            <div className='show-and-hide-password'
+              onClick={() => setHidePassword(!hidePassword)} >
+              <ion-icon name="eye-outline" />
+              <p >
+                Mostrar Senha
+              </p>
+            </div>
+            :
+            <div className='show-and-hide-password'
+              onClick={() => setHidePassword(!hidePassword)} >
+              <ion-icon name="eye-off-outline" />
+              <p>
+                Esconder Senha
+              </p>
+            </div>
+        }
+        <Link to={'/'}>
+          <div className='register'>
+            <p>Fazer Login</p>
           </div>
-          :
-          <div className='show-and-hide-password' onClick={() => setHidePassword(!hidePassword)} >
-            <ion-icon name="eye-off-outline" />
-            <p>
-
-              Hide password
-            </p>
-          </div>
-      }
-      <div className='register'>
-        <p>Primeira vez? Cadastre-se!</p>
-      </div>
-    </Container>
-  )
+        </Link>
+      </Container>
+    )
+  } else {
+    return (<div className='loading' />)
+  }
 }
+
+// styled divs
+// styled divs
+// styled divs
+// styled divs
+// styled divs
+// styled divs
+// styled divs
+
 
 const Container = styled.div`
   display: flex;

@@ -3,11 +3,38 @@ import axios from 'axios'
 import styled from 'styled-components';
 import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+import Loading from './Loading'
+
+
 
 
 export default function LoginScreen() {
 
+  // consts
   const [hidePassword, setHidePassword] = useState(true)
+  const [loading, setLoading] = useState(false)
+
+  //functions
+
+  function enterApp() {
+    setLoading(!loading)
+    // códigos para enviar o axios
+  }
+
+  //functions de componentes html
+  function Button() {
+    if (loading) {
+      return <Loading />
+    } else {
+      return (
+        <button onClick={() => enterApp()}>
+          <p>Entrar</p>
+        </button>
+      )
+    }
+  }
+
+  // componentes principais
 
   return (
     <Container>
@@ -22,33 +49,44 @@ export default function LoginScreen() {
         type={hidePassword ? 'password' : 'text'}
         placeholder={'Senha'}
       />
-      <button>
-        <p>Entrar</p>
-      </button>
+      <Button />
+
       {
         hidePassword ?
-          <div className='show-and-hide-password' onClick={() => setHidePassword(!hidePassword)} >
+          <div className='show-and-hide-password'
+            onClick={() => setHidePassword(!hidePassword)} >
             <ion-icon name="eye-outline" />
             <p >
-
-              Show password
+              Mostrar Senha
             </p>
           </div>
           :
-          <div className='show-and-hide-password' onClick={() => setHidePassword(!hidePassword)} >
+          <div className='show-and-hide-password'
+            onClick={() => setHidePassword(!hidePassword)} >
             <ion-icon name="eye-off-outline" />
             <p>
-
-              Hide password
+              Esconder Senha
             </p>
           </div>
       }
-      <div className='register'>
-        <p>Primeira vez? Cadastre-se!</p>
-      </div>
+      <Link to={'/signUp'}>
+        <div className='register'>
+          <p>Primeira vez? Cadastre-se!</p>
+        </div>
+      </Link>
     </Container>
   )
+
 }
+
+// styled divs
+// styled divs
+// styled divs
+// styled divs
+// styled divs
+// styled divs
+// styled divs
+
 
 const Container = styled.div`
   display: flex;
