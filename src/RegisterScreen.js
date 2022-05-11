@@ -3,79 +3,107 @@ import axios from 'axios'
 import styled from 'styled-components';
 import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+import Loading from './Loading'
 
 
-
-export default function LoginScreen() {
+export default function RegisterScreen() {
 
   // consts
   const [hidePassword, setHidePassword] = useState(true)
   const [loading, setLoading] = useState(false)
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [userData, setUserData] = useState(
+    {
+      email: "",
+      name: "",
+      password: "",
+    }
+  )
+
 
   //functions
 
-  function enterApp() {
-    console.log('entrou')
-    setLoading(true)
-    // cógigos para enviar o axios
+  function registerUser() {
+    console.log('Confirm pass', confirmPassword)
+    if (userData.password !== confirmPassword) {
+      alert('Sua senha e a confimação não são iguais');
+      return
+    }
+    setLoading(!loading)
+    console.log('registrando usuário')
+    // códigos para enviar o axios
+    // ao fim do axios .catch setLoading(!loading)
+    console.log(userData)
+  }
+
+  // functions para componentes
+  function Button() {
+    if (loading) {
+      return <Loading />
+    } else {
+      return (
+        <button onClick={() => registerUser()}>
+          <p>Registrar</p>
+        </button>
+      )
+    }
   }
 
   // componentes principais
-  if (loading === false) {
-    return (
-      <Container>
-        <img
-          src='./assets/logo-without-background.png'
-          alt='logo'
-        />
-        <h1>Flex Shoes</h1>
-        <input
-          type={'text'}
-          placeholder={'Nome'}
-        />
-        <input
-          type={'text'}
-          placeholder={'Email'}
-        />
-        <input
-          type={hidePassword ? 'password' : 'text'}
-          placeholder={'Senha'}
-        />
-        <input
-          type={hidePassword ? 'password' : 'text'}
-          placeholder={'Confirme a Senha'}
-        />
-        <button onClick={() => enterApp()}>
-          <p>Registrar</p>
-        </button>
-        {
-          hidePassword ?
-            <div className='show-and-hide-password'
-              onClick={() => setHidePassword(!hidePassword)} >
-              <ion-icon name="eye-outline" />
-              <p >
-                Mostrar Senha
-              </p>
-            </div>
-            :
-            <div className='show-and-hide-password'
-              onClick={() => setHidePassword(!hidePassword)} >
-              <ion-icon name="eye-off-outline" />
-              <p>
-                Esconder Senha
-              </p>
-            </div>
-        }
-        <Link to={'/'}>
-          <div className='register'>
-            <p>Fazer Login</p>
+
+  return (
+    <Container>
+      <img
+        src='./assets/logo-without-background.png'
+        alt='logo'
+      />
+      <h1>Flex Shoes</h1>
+      <input
+        type={'text'}
+        placeholder={'Nome'}
+        onChange={(e) => setUserData({ ...userData, name: e.target.value })}
+      />
+      <input
+        type={'text'}
+        placeholder={'Email'}
+        onChange={(e) => setUserData({ ...userData, email: e.target.value })}
+      />
+      <input
+        type={hidePassword ? 'password' : 'text'}
+        placeholder={'Senha'}
+        onChange={(e) => setUserData({ ...userData, password: e.target.value })}
+      />
+      <input
+        type={hidePassword ? 'password' : 'text'}
+        placeholder={'Confirme a Senha'}
+        onChange={(e) => setConfirmPassword(e.target.value)}
+      />
+      <Button />
+      {
+        hidePassword ?
+          <div className='show-and-hide-password'
+            onClick={() => setHidePassword(!hidePassword)} >
+            <ion-icon name="eye-outline" />
+            <p >
+              Mostrar Senha
+            </p>
           </div>
-        </Link>
-      </Container>
-    )
-  } else {
-    return (<div className='loading' />)
-  }
+          :
+          <div className='show-and-hide-password'
+            onClick={() => setHidePassword(!hidePassword)} >
+            <ion-icon name="eye-off-outline" />
+            <p>
+              Esconder Senha
+            </p>
+          </div>
+      }
+      <Link to={'/'}>
+        <div className='register'>
+          <p>Fazer Login</p>
+        </div>
+      </Link>
+    </Container>
+  )
 }
 
 // styled divs

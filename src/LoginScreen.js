@@ -13,12 +13,20 @@ export default function LoginScreen() {
   // consts
   const [hidePassword, setHidePassword] = useState(true)
   const [loading, setLoading] = useState(false)
+  const [login, setLogin] = useState(
+    {
+      email: '',
+      password: '',
+    }
+  )
 
   //functions
 
   function enterApp() {
     setLoading(!loading)
+    console.log(login)
     // códigos para enviar o axios
+    // ao fim do axios .catch setLoading(!loading)
   }
 
   //functions de componentes html
@@ -44,8 +52,10 @@ export default function LoginScreen() {
       <input
         type={'text'}
         placeholder={'Login'}
+        onChange={(e) => setLogin({ ...login, email: e.target.value })}
       />
       <input
+        onChange={(e) => setLogin({ ...login, password: e.target.value })}
         type={hidePassword ? 'password' : 'text'}
         placeholder={'Senha'}
       />
