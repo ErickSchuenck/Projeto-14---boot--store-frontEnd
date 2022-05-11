@@ -3,9 +3,11 @@ body {
   padding: 0;
   background-color: #E6E7E9;
   font-family: var(--logoFont);
+  user-select: none;
 }
 
 :root{
   --logoFont: 'Staatliches', cursive;
   --primaryFont: 'Roboto Condensed', sans-serif;
+  --highlightColor: #f3dec7;
 }
