@@ -10,4 +10,6 @@ body {
   --logoFont: 'Staatliches', cursive;
   --primaryFont: 'Roboto Condensed', sans-serif;
   --highlightColor: #f3dec7;
+  --highlightColorDarker: #9e8468;
+  --fundo: white;
 }
