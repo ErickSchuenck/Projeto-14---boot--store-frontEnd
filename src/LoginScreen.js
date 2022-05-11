@@ -51,7 +51,7 @@ export default function LoginScreen() {
       <h1>Flex Shoes</h1>
       <input
         type={'text'}
-        placeholder={'Login'}
+        placeholder={'Email'}
         onChange={(e) => setLogin({ ...login, email: e.target.value })}
       />
       <input
