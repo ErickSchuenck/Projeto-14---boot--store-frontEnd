@@ -5,6 +5,7 @@ import styled from 'styled-components';
 export default function Carousel() {
   return (
     <ItemsWrapper>
+      <Item />
       <div className='items'>
         <div className='item'>
 
@@ -27,12 +28,19 @@ export default function Carousel() {
           <img src='./assets/propagandas/5.png' alt='propaganda 5' />
           <img className='filter' src='./assets/ripped.png' alt='filtro' />
         </div>
-        <div className='item'>
-          <img src='./assets/propagandas/6.png' alt='propaganda 6' />
-          <img className='filter' src='./assets/ripped.png' alt='filtro' />
-        </div>
+
       </div>
     </ItemsWrapper>
+  )
+}
+
+function Item() {
+  return (
+    // <div className='item'>
+    //   <img src='./assets/propagandas/6.png' alt='propaganda 6' />
+    //   <img className='filter' src='./assets/ripped.png' alt='filtro' />
+    // </div>
+    null
   )
 }
 
@@ -63,7 +71,6 @@ const ItemsWrapper = styled.div`
   .filter{
     position: absolute;
     top: 0;
-    /* bottom: 0px; */
     left: 0;
     z-index: 1;
     height: 60px;

@@ -57,7 +57,10 @@ export default function RegisterScreen() {
         src='./assets/logo-without-background.png'
         alt='logo'
       />
-      <h1>Flex Shoes</h1>
+      <div className='title'>
+        <h1>Flex Shoes</h1>
+
+      </div>
       <input
         type={'text'}
         placeholder={'Nome'}
@@ -97,11 +100,17 @@ export default function RegisterScreen() {
             </p>
           </div>
       }
-      <Link to={'/'}>
-        <div className='register'>
+      <Link to={'/login'}>
+        <div className='login'>
           <p>Fazer Login</p>
         </div>
       </Link>
+      <Link to={'/'}>
+        <div className='leave'>
+          <ion-icon name="close-circle-outline"></ion-icon>
+        </div>
+      </Link>
+
     </Container>
   )
 }
@@ -122,7 +131,26 @@ const Container = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
-  .register p{
+  p{
+    margin:0;
+  }
+  h1{
+    margin: 0;
+  }
+  .title{
+    display: flex;
+    margin: 30px;
+  }
+  .leave{
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .login{
+    margin-bottom: 10px;
+  }
+  .login p{
     font-family: var(--primaryFont);
     color: var(--highlightColorDarker);
   }
@@ -177,6 +205,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 10px;
   }
   .show-and-hide-password p{
     margin: 0;
