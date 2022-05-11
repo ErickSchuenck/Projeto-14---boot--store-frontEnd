@@ -26,6 +26,10 @@ a:link {
   text-decoration: none;
   color: var(--secondaryColor);
 }
+a:-webkit-any-link {
+  color: black;
+  cursor: pointer;
+}
 /* ::-webkit-scrollbar {
   display: none;
 } */

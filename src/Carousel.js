@@ -16,7 +16,7 @@ export default function Carousel() {
           <img className='filter' src='./assets/ripped.png' alt='filtro' />
         </div>
         <div className='item'>
-          <img src='./assets/propagandas/3.jpg' alt='propaganda 3' />
+          <img src='./assets/propagandas/3.png' alt='propaganda 3' />
           <img className='filter' src='./assets/ripped.png' alt='filtro' />
         </div>
         <div className='item'>
@@ -25,6 +25,10 @@ export default function Carousel() {
         </div>
         <div className='item'>
           <img src='./assets/propagandas/5.png' alt='propaganda 5' />
+          <img className='filter' src='./assets/ripped.png' alt='filtro' />
+        </div>
+        <div className='item'>
+          <img src='./assets/propagandas/6.png' alt='propaganda 6' />
           <img className='filter' src='./assets/ripped.png' alt='filtro' />
         </div>
       </div>
@@ -50,8 +54,8 @@ const ItemsWrapper = styled.div`
     height: auto;
     flex: none;
     scroll-snap-align: start;
-    margin: 10px;
     position: relative;
+    margin-right: 20px;
   }
   .items img{
     width: 100%;
