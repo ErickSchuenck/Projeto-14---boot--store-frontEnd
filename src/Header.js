@@ -15,7 +15,9 @@ export default function Header() {
 
   return (
     <HeaderContainer>
-      <ion-icon name="menu-outline" onClick={showSidebar} />
+
+      <ion-icon name={(!sidebar ? 'menu-outline' : 'close-outline')} onClick={showSidebar} id={'menu'} />
+
       <ion-icon name="search-outline" />
       <div className='logo-container'>
         <img className='logo' alt='logo' src='./assets/logo.png' />
@@ -31,35 +33,37 @@ export default function Header() {
 }
 
 const HeaderContainer = styled.div`
-  height: 60px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  background-color: var(--fundo);
-  font-size: 24px;
-  .logo-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
-    font-family: var(--logoFont)
+        height: 60px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background-color: var(--fundo);
+        font-size: 24px;
+        .logo-container{
+          display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+        font-family: var(--logoFont)
   }
-  .logo{
-    height: 44px;
+        .logo{
+          height: 44px;
   }
-  ion-icon{
-    cursor: pointer;
+        ion-icon{
+          cursor: pointer;
   }
-  .logo-container p:hover{
-    cursor: pointer;
-    transition-duration: 5s;
-    color: var(--highlightColorDarker);
+        .logo-container p:hover{
+          cursor: pointer;
+        transition-duration: 5s;
+        color: var(--highlightColorDarker);
   }
-  ion-icon:hover{
-    transform: scale(1.1);
-    transition-duration: .5s;
-    color: var(--highlightColorDarker);
+        ion-icon:hover{
+          transform: scale(1.1);
+        transition-duration: .5s;
+        color: var(--highlightColorDarker);
   }
-
+        #menu{
+          z-index: 4;
+  }
 `

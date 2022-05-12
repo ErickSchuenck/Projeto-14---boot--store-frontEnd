@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export default function sidebar() {
   return (
     <Sidebar>
-      TESTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+
     </Sidebar>
   )
 }
@@ -13,7 +13,8 @@ export default function sidebar() {
 const Sidebar = styled.div`
   width: 200px;
   height: 100vh;
-  background-color: red;
+  /* background-color: var(--fundo); */
+  background-image: linear-gradient(to right, var(--fundo) , rgba(0,0,0,0.0));
   position: fixed;
   top: 0px;
   left: 0px;
