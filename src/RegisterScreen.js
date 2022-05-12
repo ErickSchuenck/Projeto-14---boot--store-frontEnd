@@ -103,13 +103,13 @@ export default function RegisterScreen() {
           </div>
       }
       <Link to={'/login'}>
-        <div className='login'>
+        <div className='link-text'>
           <p>Fazer Login</p>
         </div>
       </Link>
       <Link to={'/'}>
-        <div className='leave'>
-          <ion-icon name="close-circle-outline"></ion-icon>
+        <div className='link-text'>
+          <p>Retornar ao Site</p>
         </div>
       </Link>
 
@@ -148,10 +148,10 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
   }
-  .login{
+  .link-text{
     margin-bottom: 10px;
   }
-  .login p{
+  .link-text p{
     font-family: var(--primaryFont);
     color: var(--highlightColorDarker);
   }

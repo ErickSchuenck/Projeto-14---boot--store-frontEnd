@@ -25,7 +25,6 @@ export default function LoginScreen() {
   //functions
 
   function enterApp() {
-    alert('testeeee')
     setLoading(!loading)
     console.log(login)
     // códigos para enviar o axios
@@ -85,8 +84,13 @@ export default function LoginScreen() {
 
       <Button />
       <Link to={'/signUp'}>
-        <div className='register'>
+        <div className='link-text'>
           <p>Primeira vez? Cadastre-se!</p>
+        </div>
+      </Link>
+      <Link to={'/'}>
+        <div className='link-text'>
+          <p>Retornar ao Site</p>
         </div>
       </Link>
     </Container>
@@ -110,7 +114,10 @@ const Container = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
-  .register p{
+  p{
+    margin: 5px;
+  }
+  .link-text p{
     font-family: var(--primaryFont);
     color: var(--highlightColorDarker);
   }
