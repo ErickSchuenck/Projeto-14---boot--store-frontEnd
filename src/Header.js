@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Sidebar from './Sidebar.js'
-
+import Cart from './Cart.js';
 
 
 export default function Header() {
@@ -12,23 +12,33 @@ export default function Header() {
     setSidebar(!sidebar)
   }
 
-  return (
-    <HeaderContainer>
+  const [cart, setCart] = useState(false);
+  function showCart() {
+    setCart(!cart)
+  }
 
-      <ion-icon name={(!sidebar ? 'menu-outline' : 'close-outline')} onClick={showSidebar} id={'menu'} />
+  if (cart === false) {
+    return (
+      <HeaderContainer>
+        <ion-icon name={(!sidebar ? 'menu-outline' : 'close-outline')} onClick={showSidebar} id={'menu'} />
 
-      <ion-icon name="search-outline" />
-      <div className='logo-container'>
-        <img className='logo' alt='logo' src='./assets/logo.png' />
-        <p>FLEX</p>
-      </div>
-      <Link to={'./login'}>
-        <ion-icon name="person-outline" />
-      </Link>
-      <ion-icon name="cart-outline" />
-      {(sidebar ? <Sidebar /> : <></>)}
-    </HeaderContainer>
-  )
+        <ion-icon name="search-outline" />
+        <div className='logo-container'>
+          <img className='logo' alt='logo' src='./assets/logo.png' />
+          <p>FLEX</p>
+        </div>
+        <Link to={'./login'}>
+          <ion-icon name="person-outline" />
+        </Link>
+        <ion-icon name="cart-outline" onClick={showCart} />
+        {(sidebar ? <Sidebar /> : <></>)}
+
+      </HeaderContainer >
+    )
+  } else {
+    return (<Cart onclick={showCart
+    } />)
+  }
 }
 
 const HeaderContainer = styled.div`
@@ -58,7 +68,7 @@ const HeaderContainer = styled.div`
         color: var(--highlightColorDarker);
   }
         ion-icon:hover{
-          transform: scale(1.1);
+        transform: scale(1.1);
         transition-duration: .5s;
         color: var(--highlightColorDarker);
   }

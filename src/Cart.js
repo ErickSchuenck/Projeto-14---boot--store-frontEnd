@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components';
 import StyledButton from './styledButton';
 
-export default function Cart() {
+export default function Cart({ onclick }) {
 
   const [items, setItems] = useState([
     {
@@ -21,21 +21,22 @@ export default function Cart() {
         <div className='logo-text'>
           <h1>Flex Shoes</h1>
         </div>
+        <ion-icon name="close-outline" onClick={onclick} />
       </div>
       <div className='summary'>
         <div className='title'>
-          <h1>Order Sumary</h1>
+          <h1>Resumo <br /> do Pedido</h1>
         </div>
         <div className='infos'>
           <h2>1 item</h2>
           <h2>50.00</h2>
         </div>
         <div className='infos'>
-          <h2>Delivery</h2>
-          <h2>50.00</h2>
+          <h2>Entrega</h2>
+          <h2>20.00</h2>
         </div>
         <div className='infos'>
-          <h3>Total Cost</h3>
+          <h3>Total</h3>
           <h3>1000.00</h3>
         </div>
         <div className='wrapper'>
@@ -50,6 +51,7 @@ export default function Cart() {
           {/* inserir itens do usuário aqui  */}
         </div>
       </div>
+
     </ShoppingCart>
   )
 }
@@ -114,7 +116,6 @@ const ShoppingCart = styled.div`
     margin-top: 10px;
     width: 150px;
     display: flex;
-    justify-content: center;
     align-items: center;
   }
   .infos{
@@ -135,6 +136,19 @@ const ShoppingCart = styled.div`
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     height: 60px;
     position: relative;
+  }
+  .header ion-icon{
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    font-size: 24px;
+    transform: translate(0, -50%);
+    cursor: pointer;
+  }
+  .header ion-icon:hover{
+    /* transform: scale(1.1); */
+    transition-duration: .5s;
+    color: var(--highlightColorDarker);
   }
   .logo{
     position: absolute;
