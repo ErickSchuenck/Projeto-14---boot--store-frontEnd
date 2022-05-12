@@ -1,20 +1,25 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 import LoginScreen from './LoginScreen'
 import RegisterScreen from './RegisterScreen'
 import MainScreen from './MainScreen'
 import Cart from './Cart'
+import UserContext from "./contexts/userContext";
 
 
 function App() {
+  const [user, setUser] = useState(null);
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/login' element={<LoginScreen />} />
-        <Route path='/signUp' element={<RegisterScreen />} />
-        <Route path='/' element={<MainScreen />} />
-        {/* <Route path='/test' element={<Cart />} /> */}
-      </Routes>
-    </BrowserRouter>
+    <UserContext.Provider value={{user, setUser}}>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/login' element={<LoginScreen />} />
+          <Route path='/signUp' element={<RegisterScreen />} />
+          <Route path='/' element={<MainScreen />} />
+          {/* <Route path='/test' element={<Cart />} /> */}
+        </Routes>
+      </BrowserRouter>
+    </UserContext.Provider>
   );
 }
 

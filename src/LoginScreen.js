@@ -1,16 +1,20 @@
-import React from 'react'
 import axios from 'axios'
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useState, useContext} from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import Loading from './Loading'
 import StyledButton from './styledButton'
+import UserContext from './contexts/userContext';
 
 
 
 
 
 export default function LoginScreen() {
+
+  // USUÁRIO GUARDADO NO CONTEXT
+  const {user, setUser} = useContext(UserContext);
+  const navigator = useNavigate();
 
   // consts
   const [hidePassword, setHidePassword] = useState(true)
@@ -24,12 +28,28 @@ export default function LoginScreen() {
 
   //functions
 
-  function enterApp() {
-    setLoading(!loading)
-    console.log(login)
-    // códigos para enviar o axios
-    // ao fim do axios .catch setLoading(!loading)
+  async function enterApp(e) {
+    e.preventDefault();
+    try {
+      console.log(login);
+      const response = await axios.post("http://localhost:5000/sign-in", login);
+
+      setUser(response.data);
+      setLoading(!loading);
+      navigator("/");
+      
+    } catch (error) {
+      alert("Ops! Infelizmente aconteceu um erro! Tente novamente!");
+      console.log(error);
+    }
   }
+
+  // function enterApp() {
+  //   setLoading(!loading)
+  //   console.log(login)
+  //   // códigos para enviar o axios
+  //   // ao fim do axios .catch setLoading(!loading)
+  // }
 
   //functions de componentes html
   function Button() {
