@@ -1,16 +1,36 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import StyledButton from './styledButton';
 
 export default function Cart({ onclick }) {
 
+  const [totalPrice, setTotalPrice] = useState(0)
+  const [totalPriceWithFee, setTotalPriceWithFee] = useState(0)
+
   const [items, setItems] = useState([
     {
       nome: 'item 1',
-      imagem: './assets/propagandas/1.jpg',
-      price: 199.50,
-    }
+      imagem: '',
+      price: 200.00,
+    },
+    {
+      nome: 'item 2',
+      imagem: '',
+      price: 150.00,
+    },
+    {
+      nome: 'item 3',
+      imagem: '',
+      price: 20.00,
+    },
   ])
+
+  function displayTotalPrice() {
+    setTotalPrice(items.reduce((a, b) => a + b.price, 0));
+    setTotalPriceWithFee(items.reduce((a, b) => a + b.price, 20))
+  }
+
+
 
   return (
     <ShoppingCart>
@@ -28,8 +48,8 @@ export default function Cart({ onclick }) {
           <h1>Resumo <br /> do Pedido</h1>
         </div>
         <div className='infos'>
-          <h2>1 item</h2>
-          <h2>50.00</h2>
+          <h2>{items.length === 1 ? '1 item' : items.length + ' items'}</h2>
+          <h2>{totalPrice}</h2>
         </div>
         <div className='infos'>
           <h2>Entrega</h2>
@@ -37,10 +57,10 @@ export default function Cart({ onclick }) {
         </div>
         <div className='infos'>
           <h3>Total</h3>
-          <h3>1000.00</h3>
+          <h3>{totalPriceWithFee}</h3>
         </div>
         <div className='wrapper'>
-          <StyledButton text={'Checkout'} />
+          <StyledButton text={'Checkout'} onclick={displayTotalPrice} />
         </div>
       </div>
       <div className='items-space'>
