@@ -26,7 +26,6 @@ export default function Carousel() {
 
   ])
 
-
   return (
     <ItemsWrapper>
 
