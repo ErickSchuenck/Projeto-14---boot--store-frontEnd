@@ -22,6 +22,7 @@ body {
   --highlightColor: #f3dec7;
   --highlightColorDarker: rgb(199, 130, 2);
   --fundo: rgb(252, 252, 252);
+  --fundo2: #E8E8E8;
 }
 a:link {
   text-decoration: none;

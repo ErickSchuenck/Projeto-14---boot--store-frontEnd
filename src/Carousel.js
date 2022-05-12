@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 
 
@@ -26,9 +26,27 @@ export default function Carousel() {
 
   ])
 
+  // const [current, setCurrent] = useState(0);
+
+  // const nextSlide = () => {
+  //   setCurrent(current === billboard.length - 1 ? 0 : current + 1)
+  //   console.log('current aqui', current)
+  // }
+
+  // const scrollInterval = 3000;
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     console.log('Logs every 3 seconds');
+  //     nextSlide();
+  //     // ItemsWrapper.scrollBy(300, 0);
+  //   }, scrollInterval);
+
+  //   return () => clearInterval(interval);
+  // }, [])
+
+
   return (
     <ItemsWrapper>
-
       <div className='items'>
         {billboard.map(({ image }, i) => (
           <Item image={image} key={i} />

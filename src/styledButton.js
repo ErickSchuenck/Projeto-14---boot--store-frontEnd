@@ -28,7 +28,7 @@ const FlexBootButton = styled.div`
   .wrapper{
     cursor: pointer;
     position: relative;
-    height: 44px;
+    height: 45px;
     width: 154px;
     margin: 10px;
   }
@@ -51,13 +51,13 @@ const FlexBootButton = styled.div`
     transition-duration: 0.5s;
   }
   .decoration-square{
-    height: 38px;
-    width: 148px;
+    height: 40px;
+    width: 151px;
     border: 1px solid black;
-    top: 4px;
-    left: 4px;
+    top: 2px;
+    left: 1px;
     position: absolute;
-    z-index: -1;
+    z-index: 0;
   }
   .button:hover{
     background-color: var(--fundo);
@@ -67,4 +67,8 @@ const FlexBootButton = styled.div`
   .button p:hover{
     transform: scale(1.05);
   }
+  /* .decoration-square:hover{
+    background-color: var(--fundo);
+    z-index: -1;
+  } */
 `

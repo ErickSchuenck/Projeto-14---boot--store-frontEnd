@@ -10,7 +10,6 @@ export default function Header() {
   const [sidebar, setSidebar] = useState(false);
   function showSidebar() {
     setSidebar(!sidebar)
-    console.log(sidebar)
   }
 
   return (
