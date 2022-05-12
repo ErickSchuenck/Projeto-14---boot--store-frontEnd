@@ -12,10 +12,22 @@ export default function sidebar() {
 
 const Sidebar = styled.div`
   width: 200px;
-  height: 400px;
+  height: 100vh;
   background-color: red;
   position: fixed;
-  top: 20px;
-  left: 10px;
+  top: 0px;
+  left: 0px;
   z-index: 3;
+  animation: showSidebar .4s;
+
+  @keyframes showSidebar{
+    from{
+      opacity: 0;
+      width:0;
+    }
+    to {
+      opacity: 1;
+      width: 200px;
+    }
+  }
 `
