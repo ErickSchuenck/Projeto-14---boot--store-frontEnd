@@ -1,46 +1,50 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
 
 
 export default function Carousel() {
+
+  const [billboard, setBillboard] = useState([
+    {
+      image: './assets/propagandas/1.jpg',
+    },
+    {
+      image: './assets/propagandas/2.jpg',
+    },
+    {
+      image: './assets/propagandas/3.png',
+    },
+    {
+      image: './assets/propagandas/4.jpg',
+    },
+    {
+      image: './assets/propagandas/5.png',
+    },
+    {
+      image: './assets/propagandas/6.png',
+    },
+
+  ])
+
+
   return (
     <ItemsWrapper>
-      <Item />
+
       <div className='items'>
-        <div className='item'>
-
-          <img src='./assets/propagandas/1.jpg' alt='propaganda 1' />
-          <img className='filter' src='./assets/ripped.png' alt='filtro' />
-        </div>
-        <div className='item'>
-          <img src='./assets/propagandas/2.jpg' alt='propaganda 2' />
-          <img className='filter' src='./assets/ripped.png' alt='filtro' />
-        </div>
-        <div className='item'>
-          <img src='./assets/propagandas/3.png' alt='propaganda 3' />
-          <img className='filter' src='./assets/ripped.png' alt='filtro' />
-        </div>
-        <div className='item'>
-          <img src='./assets/propagandas/4.jpg' alt='propaganda 4' />
-          <img className='filter' src='./assets/ripped.png' alt='filtro' />
-        </div>
-        <div className='item'>
-          <img src='./assets/propagandas/5.png' alt='propaganda 5' />
-          <img className='filter' src='./assets/ripped.png' alt='filtro' />
-        </div>
-
+        {billboard.map(({ image }, i) => (
+          <Item image={image} key={i} />
+        ))}
       </div>
     </ItemsWrapper>
   )
 }
 
-function Item() {
+function Item({ image }) {
   return (
-    // <div className='item'>
-    //   <img src='./assets/propagandas/6.png' alt='propaganda 6' />
-    //   <img className='filter' src='./assets/ripped.png' alt='filtro' />
-    // </div>
-    null
+    <div className='item'>
+      <img src={image} alt='propaganda 6' />
+      <img className='filter' src='./assets/ripped.png' alt='filtro' />
+    </div>
   )
 }
 

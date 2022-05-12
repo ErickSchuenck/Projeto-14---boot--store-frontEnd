@@ -150,6 +150,7 @@ const Container = styled.div`
   }
   button p{
     font-family: var(--primaryFont);
+    margin: 0;
   }
   button:hover{
     transform: scale(1.05);
