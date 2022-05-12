@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import Loading from './Loading'
+import StyledButton from './styledButton'
+
 
 
 
@@ -23,6 +25,7 @@ export default function LoginScreen() {
   //functions
 
   function enterApp() {
+    alert('testeeee')
     setLoading(!loading)
     console.log(login)
     // códigos para enviar o axios
@@ -35,11 +38,30 @@ export default function LoginScreen() {
       return <Loading />
     } else {
       return (
-        <button onClick={() => enterApp()}>
-          <p>Entrar</p>
-        </button>
+        <StyledButton text='Login' onclick={enterApp} />
       )
     }
+  }
+
+  function ShowHidePassword() {
+    return (
+      hidePassword ?
+        <div className='show-and-hide-password'
+          onClick={() => setHidePassword(!hidePassword)} >
+          <ion-icon name="eye-outline" />
+          <p >
+            Mostrar Senha
+          </p>
+        </div>
+        :
+        <div className='show-and-hide-password'
+          onClick={() => setHidePassword(!hidePassword)} >
+          <ion-icon name="eye-off-outline" />
+          <p>
+            Esconder Senha
+          </p>
+        </div>
+    )
   }
 
   // componentes principais
@@ -59,26 +81,9 @@ export default function LoginScreen() {
         type={hidePassword ? 'password' : 'text'}
         placeholder={'Senha'}
       />
-      <Button />
+      <ShowHidePassword />
 
-      {
-        hidePassword ?
-          <div className='show-and-hide-password'
-            onClick={() => setHidePassword(!hidePassword)} >
-            <ion-icon name="eye-outline" />
-            <p >
-              Mostrar Senha
-            </p>
-          </div>
-          :
-          <div className='show-and-hide-password'
-            onClick={() => setHidePassword(!hidePassword)} >
-            <ion-icon name="eye-off-outline" />
-            <p>
-              Esconder Senha
-            </p>
-          </div>
-      }
+      <Button />
       <Link to={'/signUp'}>
         <div className='register'>
           <p>Primeira vez? Cadastre-se!</p>
@@ -124,16 +129,19 @@ const Container = styled.div`
     border: none;
     width: 250px;
     height: 26px;
-    border-radius: 8px;
+    font-size: 18px;
+    /* border-radius: 8px; */
     font-family: var(--primaryFont);
-    background-color: var(--fundo);
+    color: var(--fundo);
+    background-color: black;
   }
   input:focus {
     outline: 0;
   }
   input::placeholder{
     font-family: var(--primaryFont);
-    color: black;
+    /* color: black; */
+    color: var(--fundo);
   }
   button{
     border: none;

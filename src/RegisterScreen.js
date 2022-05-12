@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import Loading from './Loading'
+import StyledButton from './styledButton'
 
 
 export default function RegisterScreen() {
@@ -42,9 +43,10 @@ export default function RegisterScreen() {
       return <Loading />
     } else {
       return (
-        <button onClick={() => registerUser()}>
-          <p>Registrar</p>
-        </button>
+        // <button onClick={() => registerUser()}>
+        //   <p>Registrar</p>
+        // </button>
+        <StyledButton text='Registrar' onclick={registerUser} />
       )
     }
   }
@@ -123,7 +125,6 @@ export default function RegisterScreen() {
 // styled divs
 // styled divs
 
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -169,16 +170,19 @@ const Container = styled.div`
     border: none;
     width: 250px;
     height: 26px;
-    border-radius: 8px;
+    font-size: 18px;
+    /* border-radius: 8px; */
     font-family: var(--primaryFont);
-    background-color: var(--fundo);
+    color: var(--fundo);
+    background-color: black;
   }
   input:focus {
     outline: 0;
   }
   input::placeholder{
     font-family: var(--primaryFont);
-    color: black;
+    /* color: black; */
+    color: var(--fundo);
   }
   button{
     border: none;

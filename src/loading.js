@@ -15,7 +15,7 @@ const Loading = styled.div`
   width: 25px;
   height: 25px;
   border: 6px solid var(--fundo);
-  border-top-color: var(--highlightColorDarker);
+  border-top-color: var(--black);
   border-radius: 50%;
   margin: 15px;
 }

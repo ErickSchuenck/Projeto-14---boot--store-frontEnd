@@ -1,5 +1,6 @@
 *{
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 body {
   margin: 0;
@@ -17,9 +18,9 @@ body {
 }
 :root{
   --logoFont: 'Staatliches', cursive;
-  --primaryFont: 'Roboto Condensed', sans-serif;
+  --primaryFont: 'raleway', sans-serif;
   --highlightColor: #f3dec7;
-  --highlightColorDarker: #9e8468;
+  --highlightColorDarker: rgb(199, 130, 2);
   --fundo: rgb(252, 252, 252);
 }
 a:link {
