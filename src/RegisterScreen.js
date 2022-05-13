@@ -9,32 +9,41 @@ import StyledButton from './styledButton'
 
 export default function RegisterScreen() {
 
+  const navigator = useNavigate();
+
   // consts
   const [hidePassword, setHidePassword] = useState(true)
   const [loading, setLoading] = useState(false)
-  const [confirmPassword, setConfirmPassword] = useState('')
   const [userData, setUserData] = useState(
     {
       email: "",
       name: "",
       password: "",
+      confirmPassword:""
     }
   )
 
-
   //functions
 
-  function registerUser() {
-    console.log('Confirm pass', confirmPassword)
-    if (userData.password !== confirmPassword) {
+  async function registerUser(e) {
+    e.preventDefault();
+    console.log('Confirm pass', userData.confirmPassword);
+    if (userData.password !== userData.confirmPassword) {
       alert('Sua senha e a confimação não são iguais');
-      return
+      return;
     }
-    setLoading(!loading)
-    console.log('registrando usuário')
-    // códigos para enviar o axios
-    // ao fim do axios .catch setLoading(!loading)
-    console.log(userData)
+    setLoading(!loading);
+    console.log('registrando usuário');
+
+    try {
+      console.log(userData);
+      await axios.post("http://localhost:5000/sign-up", userData);
+      alert("Cadastro feito com sucesso!");
+      navigator("/login");
+    } catch (error) {
+      alert("Erro ao enviar dados de cadastro!");
+      console.log(error);
+    }
   }
 
   // functions para componentes
@@ -81,7 +90,7 @@ export default function RegisterScreen() {
       <input
         type={hidePassword ? 'password' : 'text'}
         placeholder={'Confirme a Senha'}
-        onChange={(e) => setConfirmPassword(e.target.value)}
+        onChange={(e) => setUserData({ ...userData, confirmPassword: e.target.value })}
       />
       <Button />
       {
