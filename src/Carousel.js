@@ -26,23 +26,30 @@ export default function Carousel() {
 
   ])
 
-  // const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState(0);
 
-  // const nextSlide = () => {
-  //   setCurrent(current === billboard.length - 1 ? 0 : current + 1)
-  //   console.log('current aqui', current)
-  // }
+  const nextSlide = () => {
+    setCurrent(current === billboard.length - 1 ? 0 : current + 1)
 
-  // const scrollInterval = 3000;
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     console.log('Logs every 3 seconds');
-  //     nextSlide();
-  //     // ItemsWrapper.scrollBy(300, 0);
-  //   }, scrollInterval);
+    // { SOLUÇÃO DO NELSON
+    //   index++;
+    //   if (index === billboard.length - 1) {
+    //     index = 0
+    //   }
+    //   setCurrent(index)
+    // }
+  }
 
-  //   return () => clearInterval(interval);
-  // }, [])
+  const scrollInterval = 3000;
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // console.log('Logs every 3 seconds');
+      nextSlide();
+      // ItemsWrapper.scrollBy(300, 0);
+    }, scrollInterval);
+
+    return () => clearInterval(interval);
+  }, [])
 
 
   return (

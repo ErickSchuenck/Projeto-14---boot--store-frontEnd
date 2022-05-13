@@ -3,8 +3,12 @@ import { useState } from "react";
 import LoginScreen from './LoginScreen'
 import RegisterScreen from './RegisterScreen'
 import MainScreen from './MainScreen'
+
 import Cart from './Cart'
 import UserContext from "./contexts/userContext";
+
+import ItemComponent from './ItemComponent'
+
 
 
 function App() {
@@ -16,7 +20,7 @@ function App() {
           <Route path='/login' element={<LoginScreen />} />
           <Route path='/signUp' element={<RegisterScreen />} />
           <Route path='/' element={<MainScreen />} />
-          {/* <Route path='/test' element={<Cart />} /> */}
+          <Route path='/test' element={<ItemComponent />} />
         </Routes>
       </BrowserRouter>
     </UserContext.Provider>

@@ -1,7 +1,10 @@
 import React, { useContext } from 'react'
 import Carousel from './Carousel'
-import Header from './Header';
+import Header from './Header'
+import ItemComponent from './ItemComponent'
+
 import UserContext from './contexts/userContext';
+
 
 
 export default function MainScreen() {
@@ -11,6 +14,16 @@ export default function MainScreen() {
     <>
       <Header />
       <Carousel />
+      <ItemComponent />
+      <ItemComponent />
+      <ItemComponent />
+      <ItemComponent />
+      <ItemComponent />
+      <ItemComponent />
+      <ItemComponent />
+      <ItemComponent />
+      <ItemComponent />
+      <ItemComponent />
     </>
   )
 }
