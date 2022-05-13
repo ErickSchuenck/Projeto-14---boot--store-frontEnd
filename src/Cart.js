@@ -11,7 +11,7 @@ export default function Cart({ onclick }) {
     {
       nome: 'item 1',
       imagem: '',
-      price: 200.00,
+      price: 200.20,
     },
     {
       nome: 'item 2',
@@ -23,14 +23,21 @@ export default function Cart({ onclick }) {
       imagem: '',
       price: 20.00,
     },
+    {
+      nome: 'item 4',
+      imagem: '',
+      price: 23.99,
+    },
   ])
 
   function displayTotalPrice() {
     setTotalPrice(items.reduce((a, b) => a + b.price, 0));
-    setTotalPriceWithFee(items.reduce((a, b) => a + b.price, 20))
+    setTotalPriceWithFee(items.reduce((a, b) => a + b.price, 19.99))
   }
 
-
+  useEffect(() => {
+    displayTotalPrice()
+  }, [items])
 
   return (
     <ShoppingCart>
@@ -48,19 +55,19 @@ export default function Cart({ onclick }) {
           <h1>Resumo <br /> do Pedido</h1>
         </div>
         <div className='infos'>
-          <h2>{items.length === 1 ? '1 item' : items.length + ' items'}</h2>
+          <h2>{items.length === 1 ? '1 item' : items.length + ' itens'}</h2>
           <h2>{totalPrice}</h2>
         </div>
         <div className='infos'>
           <h2>Entrega</h2>
-          <h2>20.00</h2>
+          <h2>19.99</h2>
         </div>
         <div className='infos'>
           <h3>Total</h3>
           <h3>{totalPriceWithFee}</h3>
         </div>
         <div className='wrapper'>
-          <StyledButton text={'Checkout'} onclick={displayTotalPrice} />
+          <StyledButton text={'Checkout'} onclick={() => alert('enviando para o usuário um email com o pedido')} />
         </div>
       </div>
       <div className='items-space'>

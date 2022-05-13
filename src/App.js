@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginScreen from './LoginScreen'
 import RegisterScreen from './RegisterScreen'
 import MainScreen from './MainScreen'
-import Cart from './Cart'
+import ItemComponent from './ItemComponent'
 
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
         <Route path='/login' element={<LoginScreen />} />
         <Route path='/signUp' element={<RegisterScreen />} />
         <Route path='/' element={<MainScreen />} />
-        {/* <Route path='/test' element={<Cart />} /> */}
+        <Route path='/test' element={<ItemComponent />} />
       </Routes>
     </BrowserRouter>
   );
