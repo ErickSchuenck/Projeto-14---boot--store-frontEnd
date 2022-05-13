@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
 
-export default function ItemComponent() {
+export default function ItemComponent({item}) {
+  const { value, image, name} = item;
   return (
     <>
       <Wrapper>
         <ComponentImg>
           <div className='price-tag'>
-            <p>199.99</p>
+            <p>{value}</p>
           </div>
-          <img src='./assets/boots/1b.jpg' alt='boot'></img>
+          <img src={image} alt='boot'></img>
         </ComponentImg>
         <ComponentDescription>
-          <h1>Produto nome um</h1>
+          <h1>{name}</h1>
           <h2>Teste</h2>
           <h3>Lorem Ipsum is simply dummy text </h3>
         </ComponentDescription>

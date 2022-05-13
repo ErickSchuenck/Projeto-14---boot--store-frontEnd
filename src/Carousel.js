@@ -1,9 +1,10 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 
 
 export default function Carousel() {
-
+  
   const [billboard, setBillboard] = useState([
     {
       image: './assets/propagandas/1.jpg',
@@ -22,9 +23,26 @@ export default function Carousel() {
     },
     {
       image: './assets/propagandas/6.png',
-    },
+    }
 
   ])
+
+
+  // PUXA AS PROPAGANDAS DO BANCO DE DADOS
+  useEffect(() => {
+    (async () => {
+      try {
+        axios.get("http://localhost:5000/ads")
+          .then((response) => {
+            // COMENTADO PARA QUE NAO FIQUE SEM PROPAGANDAS NA TELA POR ENQUANTO
+            // setBillboard(response.data);
+          }).catch(e => console.log(e));
+      } catch (e) {
+        alert("Erro ao receber dados de propagandas");
+        console.log(e.response);
+      }
+    })();
+  }, []);
 
   const [current, setCurrent] = useState(0);
 
