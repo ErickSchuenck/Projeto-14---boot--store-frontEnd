@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Carousel from './Carousel'
-import Header from './Header'
-import ItemComponent from './ItemComponent'
+import Carousel from '../Carousel'
+import Header from '../Header'
+import ItemComponent from '../ItemComponent'
 
-import UserContext from './contexts/userContext';
+import UserContext from '../../contexts/userContext';
 import axios from 'axios';
 
 

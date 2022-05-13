@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import LoginScreen from './LoginScreen'
-import RegisterScreen from './RegisterScreen'
-import MainScreen from './MainScreen'
+import LoginScreen from './pages/LoginScreen'
+import RegisterScreen from './pages/RegisterScreen'
+import MainScreen from './pages/MainScreen'
 
 import Cart from './Cart'
-import UserContext from "./contexts/userContext";
+import UserContext from "../contexts/userContext";
 
 import ItemComponent from './ItemComponent'
 

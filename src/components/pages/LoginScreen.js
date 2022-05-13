@@ -2,9 +2,9 @@ import axios from 'axios'
 import styled from 'styled-components';
 import { useState, useContext} from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import Loading from './Loading'
-import StyledButton from './styledButton'
-import UserContext from './contexts/userContext';
+import Loading from '../Loading'
+import StyledButton from '../styledButton'
+import UserContext from '../../contexts/userContext';
 
 
 
