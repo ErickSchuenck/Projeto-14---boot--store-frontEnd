@@ -64,13 +64,16 @@ const HeaderContainer = styled.div`
         justify-content: space-around;
         background-color: var(--fundo);
         font-size: 24px;
+        overflow-y: hidden;
+
+
         .logo-container{
-          display: flex;
+        display: flex;
         align-items: center;
         justify-content: center;
         font-size: 40px;
         font-family: var(--logoFont);
-        position: relative;
+        position: relative; 
   }
         .logo{
           height: 44px;
