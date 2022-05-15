@@ -1,16 +1,33 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 
-export default function ItemComponent({ item }) {
+export default function ItemComponent({ item, setCartItems }) {
   const [isSelected, setIsSelected] = useState(false)
-  const { value, image, name } = item;
+
+  const { value, image, name, id } = item;
+
+
+  function selectProductToCart() {
+
+    if (isSelected) {
+      setCartItems((c) => c.filter((i) => i.id !== id))
+    } else {
+      setCartItems((c) => [...c, item])
+    }
+    setIsSelected(!isSelected);
+  }
+
+
   return (
     <>
-      <Wrapper onClick={() => setIsSelected(!isSelected)}>
+      <Wrapper onClick={() => selectProductToCart()}>
         <ComponentImg>
-          <div className='price-tag'>
-            <p>{value}</p>
-          </div>
+          {isSelected ?
+            <ion-icon name="bag-check" />
+            :
+            <div className='price-tag'>
+              <p>{value}</p>
+            </div>}
           <img src={image} alt='boot'></img>
         </ComponentImg>
         <ComponentDescription>
@@ -47,6 +64,13 @@ p{
   bottom: 5px;
   left: 5px;
   overflow-y: hidden;
+}
+ion-icon{
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  font-size: 45px;
+  color: var(--highlightColorDarker)
 }
 img{
   width: 100%;

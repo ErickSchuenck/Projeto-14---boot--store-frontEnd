@@ -9,23 +9,23 @@ export default function Cart({ onclick }) {
 
   const [items, setItems] = useState([
     {
-      nome: 'item 1',
-      imagem: '',
+      name: 'item 1',
+      image: '',
       price: 200.20,
     },
     {
-      nome: 'item 2',
-      imagem: '',
+      name: 'item 2',
+      image: '',
       price: 150.00,
     },
     {
-      nome: 'item 3',
-      imagem: '',
+      name: 'item 3',
+      image: '',
       price: 20.00,
     },
     {
-      nome: 'item 4',
-      imagem: '',
+      name: 'item 4',
+      image: '',
       price: 23.99,
     },
   ])
@@ -75,6 +75,7 @@ export default function Cart({ onclick }) {
           <h1>Cart</h1>
         </div>
         <div className='user-items'>
+          {items.map((items) => <h1>{items.name}</h1>)}
           {/* inserir itens do usuário aqui  */}
         </div>
       </div>
