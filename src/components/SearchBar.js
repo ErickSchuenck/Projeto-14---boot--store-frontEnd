@@ -6,7 +6,7 @@ export default function SearchBar() {
   return (
     <Search>
       <div className='search-input'>
-        <input type={'text'} placeholder={'teste'}></input>
+        <input type={'text'} placeholder={'nome do produto'}></input>
       </div>
       <ion-icon name="search-outline"></ion-icon>
     </Search>

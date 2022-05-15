@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
 
-export default function ItemComponent({item}) {
-  const { value, image, name} = item;
+export default function ItemComponent({ item }) {
+  const [isSelected, setIsSelected] = useState(false)
+  const { value, image, name } = item;
   return (
     <>
-      <Wrapper>
+      <Wrapper onClick={() => setIsSelected(!isSelected)}>
         <ComponentImg>
           <div className='price-tag'>
             <p>{value}</p>
@@ -14,10 +15,10 @@ export default function ItemComponent({item}) {
         </ComponentImg>
         <ComponentDescription>
           <h1>{name}</h1>
-          <h2>Teste</h2>
+          <h2>{isSelected ? 'No carrinho' : 'Comprar'}</h2>
           <h3>Lorem Ipsum is simply dummy text </h3>
         </ComponentDescription>
-      </Wrapper>
+      </Wrapper >
     </>
   )
 }
