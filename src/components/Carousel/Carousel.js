@@ -35,7 +35,7 @@ export default function Carousel() {
   useEffect(() => {
     (async () => {
       try {
-        axios.get("http://localhost:5000/ads")
+        axios.get("https://flexstore-back.herokuapp.com/ads")
           .then((response) => {
             // COMENTADO PARA QUE NAO FIQUE SEM PROPAGANDAS NA TELA POR ENQUANTO
             // setBillboard(response.data);

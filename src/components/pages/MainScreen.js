@@ -121,7 +121,7 @@ export default function MainScreen() {
   useEffect(() => {
     (async () => {
       try {
-        axios.get("http://localhost:5000/products")
+        axios.get("https://flexstore-back.herokuapp.com/products")
           .then((response) => {
             setProducts(response.data);
           }).catch(e => console.log(e));
