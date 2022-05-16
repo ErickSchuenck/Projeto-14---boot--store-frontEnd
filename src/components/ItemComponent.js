@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
+import UserContext from "../contexts/userContext";
 import styled from 'styled-components';
 
-export default function ItemComponent({ item, setCartItems }) {
-  const [isSelected, setIsSelected] = useState(false)
 
+export default function ItemComponent({ item }) {
+
+  const { cartItems, setCartItems } = useContext(UserContext);
   const { value, image, name, id } = item;
-
+  const isSelected = cartItems.filter((i) => i.id === id).length > 0
 
   function selectProductToCart() {
 
@@ -14,7 +16,6 @@ export default function ItemComponent({ item, setCartItems }) {
     } else {
       setCartItems((c) => [...c, item])
     }
-    setIsSelected(!isSelected);
   }
 
 

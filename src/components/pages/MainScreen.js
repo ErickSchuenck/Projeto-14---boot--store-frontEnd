@@ -6,29 +6,29 @@ import UserContext from '../../contexts/userContext';
 import axios from 'axios';
 
 export default function MainScreen() {
-  const { user } = useContext(UserContext);
-  const [products, setProducts] = useState([]);
-  const [cartItems, setCartItems] = useState([]);
+  const { user, cartItems, setCartItems } = useContext(UserContext);
+  const [products, setProducts] = useState([
+    // PRODUTOS PARA TESTE
+    {
+      value: 299.99,
+      name: "Tenis 1",
+      image: './assets/boots/1b.jpg',
+      id: 1
+    },
+    {
+      value: 199.99,
+      name: "Tenis 2",
+      image: './assets/boots/2b.jpg',
+      id: 2
+    },
+    {
+      value: 99.99,
+      name: "Tenis 3",
+      image: './assets/boots/4b.jpg',
+      id: 3
+    }
+  ]);
 
-  // PRODUTO PARA TESTE
-  const testProduct = {
-    value: 100.00,
-    name: "Tenis 1",
-    image: './assets/boots/1b.jpg',
-    id: 1
-  }
-  const testProduct2 = {
-    value: 100.21,
-    name: "Tenis 2",
-    image: './assets/boots/2b.jpg',
-    id: 2
-  }
-  const testProduct3 = {
-    value: 99.99,
-    name: "Tenis 3",
-    image: './assets/boots/4b.jpg',
-    id: 3
-  }
 
   // BUSCA OS PRODUTOS DO BANCO DE DADOS
   useEffect(() => {
@@ -45,14 +45,17 @@ export default function MainScreen() {
     })();
   }, []);
 
+
+
   return (
     <>
       <Header />
       <Carousel />
-      {products.map(product => <ItemComponent key={product._id} item={product} />)}
-      <ItemComponent item={testProduct} setCartItems={setCartItems} />
-      <ItemComponent item={testProduct2} setCartItems={setCartItems} />
-      <ItemComponent item={testProduct3} setCartItems={setCartItems} />
+      {products.map(product => <ItemComponent
+        key={product._id} item={product}
+        products={products}
+      />)}
+
     </>
   )
 }

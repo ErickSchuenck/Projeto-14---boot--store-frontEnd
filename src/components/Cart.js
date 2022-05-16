@@ -1,43 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import styled from 'styled-components';
 import StyledButton from './styledButton';
+import UserContext from "../contexts/userContext";
 
 export default function Cart({ onclick }) {
+  console.log(JSON.parse(localStorage.getItem("order")))
+  const { cartItems, setCartItems } = useContext(UserContext);
 
   const [totalPrice, setTotalPrice] = useState(0)
   const [totalPriceWithFee, setTotalPriceWithFee] = useState(0)
 
-  const [items, setItems] = useState([
-    {
-      name: 'item 1',
-      image: '',
-      price: 200.20,
-    },
-    {
-      name: 'item 2',
-      image: '',
-      price: 150.00,
-    },
-    {
-      name: 'item 3',
-      image: '',
-      price: 20.00,
-    },
-    {
-      name: 'item 4',
-      image: '',
-      price: 23.99,
-    },
-  ])
-
   function displayTotalPrice() {
-    setTotalPrice(items.reduce((a, b) => a + b.price, 0));
-    setTotalPriceWithFee(items.reduce((a, b) => a + b.price, 19.99))
+    setTotalPrice(cartItems.reduce((a, b) => a + b.value, 0).toFixed(2));
+    setTotalPriceWithFee(cartItems.reduce((a, b) => a + b.value, 19.99).toFixed(2))
   }
 
-  useEffect(() => {
-    displayTotalPrice()
-  }, [items])
+  useEffect(displayTotalPrice, [cartItems])
 
   return (
     <ShoppingCart>
@@ -55,7 +33,7 @@ export default function Cart({ onclick }) {
           <h1>Resumo <br /> do Pedido</h1>
         </div>
         <div className='infos'>
-          <h2>{items.length === 1 ? '1 item' : items.length + ' itens'}</h2>
+          <h2>{cartItems.length === 1 ? '1 item' : cartItems.length + ' itens'}</h2>
           <h2>{totalPrice}</h2>
         </div>
         <div className='infos'>
@@ -67,7 +45,15 @@ export default function Cart({ onclick }) {
           <h3>{totalPriceWithFee}</h3>
         </div>
         <div className='wrapper'>
-          <StyledButton text={'Checkout'} onclick={() => alert('enviando para o usuário um email com o pedido')} />
+          <StyledButton
+            text={'Checkout'}
+            onclick={() => {
+              alert('enviando para o usuário um email com o pedido');
+              setCartItems([]);
+            }}
+          />
+          <StyledButton text={'Esvaziar Carrinho'}
+            onclick={() => setCartItems([])} />
         </div>
       </div>
       <div className='items-space'>
@@ -75,8 +61,7 @@ export default function Cart({ onclick }) {
           <h1>Cart</h1>
         </div>
         <div className='user-items'>
-          {items.map((items) => <h1>{items.name}</h1>)}
-          {/* inserir itens do usuário aqui  */}
+          {cartItems.map((item) => <h1>{item.name}</h1>)}
         </div>
       </div>
 
