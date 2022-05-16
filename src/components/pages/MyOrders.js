@@ -11,7 +11,7 @@ export default function MyOrders() {
     useEffect(() => {
         (async () => {
             try {
-                const request = await axios.get("https://git.heroku.com/flexstore-back.git/cart", {
+                const request = await axios.get("https://flexstore-back.herokuapp.com/cart", {
                     headers: {
                         "Authorization": `Bearer ${user.token}`
                     }

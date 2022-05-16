@@ -32,7 +32,7 @@ export default function LoginScreen() {
     e.preventDefault();
     try {
       console.log(login);
-      const response = await axios.post("https://git.heroku.com/flexstore-back.git/sign-in", login);
+      const response = await axios.post("https://flexstore-back.herokuapp.com/sign-in", login);
 
       setUser(response.data);
       setLoading(!loading);
@@ -47,7 +47,7 @@ export default function LoginScreen() {
   async function logOut(e){
     e.preventDefault();
     try {
-        await axios.get("https://git.heroku.com/flexstore-back.git/sign-out", {
+        await axios.get("https://flexstore-back.herokuapp.com/sign-out", {
         headers: {
           "Authorization": `Bearer ${user.token}`
         }

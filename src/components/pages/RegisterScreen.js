@@ -37,7 +37,7 @@ export default function RegisterScreen() {
 
     try {
       console.log(userData);
-      await axios.post("https://git.heroku.com/flexstore-back.git/sign-up", userData);
+      await axios.post("https://flexstore-back.herokuapp.com/sign-up", userData);
       alert("Cadastro feito com sucesso!");
       navigator("/login");
     } catch (error) {
