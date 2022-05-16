@@ -9,7 +9,6 @@ export default function Cart({ onclick }) {
   console.log(JSON.parse(localStorage.getItem("order")))
   const { cartItems, setCartItems } = useContext(UserContext);
   const { user } = useContext(UserContext);
-
   const navigator = useNavigate();
   const [totalPrice, setTotalPrice] = useState(0)
   const [totalPriceWithFee, setTotalPriceWithFee] = useState(0)
