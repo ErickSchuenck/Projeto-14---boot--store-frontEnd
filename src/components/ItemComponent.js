@@ -6,13 +6,13 @@ import styled from 'styled-components';
 export default function ItemComponent({ item }) {
 
   const { cartItems, setCartItems } = useContext(UserContext);
-  const { value, image, name, id, description } = item;
-  const isSelected = cartItems.filter((i) => i.id === id).length > 0
+  const { value, image, name, _id, description } = item;
+  const isSelected = cartItems.filter((i) => i._id === _id).length > 0
 
   function selectProductToCart() {
 
     if (isSelected) {
-      setCartItems((c) => c.filter((i) => i.id !== id))
+      setCartItems((c) => c.filter((i) => i._id !== _id))
     } else {
       setCartItems((c) => [...c, item])
     }
@@ -33,6 +33,7 @@ export default function ItemComponent({ item }) {
         </ComponentImg>
         <ComponentDescription>
           <h1>{name}</h1>
+          
           <h2>{isSelected ? 'No carrinho' : 'Comprar'}</h2>
           <h3>{description}</h3>
         </ComponentDescription>
