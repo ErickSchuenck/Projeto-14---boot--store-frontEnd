@@ -36,7 +36,6 @@ export default function RegisterScreen() {
     console.log('registrando usuário');
 
     try {
-      console.log(userData);
       await axios.post("https://flexstore-back.herokuapp.com/sign-up", userData);
       alert("Cadastro feito com sucesso!");
       navigator("/login");
@@ -52,9 +51,6 @@ export default function RegisterScreen() {
       return <Loading />
     } else {
       return (
-        // <button onClick={() => registerUser()}>
-        //   <p>Registrar</p>
-        // </button>
         <StyledButton text='Registrar' onclick={registerUser} />
       )
     }

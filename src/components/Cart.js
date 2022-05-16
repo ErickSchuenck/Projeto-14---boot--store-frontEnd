@@ -6,7 +6,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 export default function Cart({ onclick }) {
-  console.log(JSON.parse(localStorage.getItem("order")))
   const { cartItems, setCartItems } = useContext(UserContext);
   const { user } = useContext(UserContext);
   
@@ -22,8 +21,12 @@ export default function Cart({ onclick }) {
   useEffect(displayTotalPrice, [cartItems])
 
   async function closeCart(){
+    if(!user){
+      alert('Entre antes de efetuar a compra!');
+      navigator('/login');
+      return;
+    }
     try {
-      console.log(user.token);
         await axios.post("https://flexstore-back.herokuapp.com/cart",
         {body:{cartItems, totalPriceWithFee}}, {
         headers: {

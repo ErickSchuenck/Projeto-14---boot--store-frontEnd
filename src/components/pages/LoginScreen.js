@@ -27,11 +27,9 @@ export default function LoginScreen() {
   )
 
   //functions
-
   async function enterApp(e) {
     e.preventDefault();
     try {
-      console.log(login);
       const response = await axios.post("https://flexstore-back.herokuapp.com/sign-in", login);
 
       setUser(response.data);
@@ -54,7 +52,6 @@ export default function LoginScreen() {
       });
 
       setUser('');
-      console.log(user);
       setLoading(!loading);
       navigator("/");
       
@@ -63,13 +60,6 @@ export default function LoginScreen() {
       console.log(error);
     }
   }
-
-  // function enterApp() {
-  //   setLoading(!loading)
-  //   console.log(login)
-  //   // códigos para enviar o axios
-  //   // ao fim do axios .catch setLoading(!loading)
-  // }
 
   //functions de componentes html
   function Button() {

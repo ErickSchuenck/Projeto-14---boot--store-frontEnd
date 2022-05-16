@@ -24,7 +24,7 @@ export default function MyOrders() {
                 console.log(error);
             }
         })();
-    }, []);
+    }, [user]);
 
     return (
         <Container>

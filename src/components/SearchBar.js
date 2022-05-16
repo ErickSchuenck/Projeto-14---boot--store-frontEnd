@@ -10,7 +10,6 @@ export default function SearchBar() {
   const { products, setProducts, productsInitialList } = useContext(UserContext);
   const [searchTerm, setSearchTerm] = useState('')
 
-
   function filterProducts() {
     setProducts(products.filter((val) => {
       if (searchTerm === '') {

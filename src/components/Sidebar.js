@@ -6,6 +6,7 @@ import styled from 'styled-components';
 export default function Sidebar() {
 
   const { products, setProducts } = useContext(UserContext);
+  const {user} = useContext(UserContext);
 
   function orderProducts(type) {
     if (type === 'crescent') {
@@ -23,9 +24,14 @@ export default function Sidebar() {
   return (
     <SidebarStyle>
       <h1>Ver</h1>
+      {user?(
       <Link to={'/myorders'}>
         <h2>Meus pedidos</h2>
       </Link>
+      ):(
+        <h2 onClick={() => alert('Você precisa entrar para ver seus pedidos!!')}>Meus pedidos</h2>
+      )
+      }
       <h1>Ordenar</h1>
       <h2 onClick={() => orderProducts('mostBuys')}>Mais Comprados</h2>
       <h2 onClick={() => orderProducts('crescent')}>Menor preço</h2>
