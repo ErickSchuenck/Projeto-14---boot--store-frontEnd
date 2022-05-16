@@ -2,11 +2,15 @@ import React, { useEffect, useState, useContext } from 'react'
 import styled from 'styled-components';
 import StyledButton from './styledButton';
 import UserContext from "../contexts/userContext";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function Cart({ onclick }) {
   console.log(JSON.parse(localStorage.getItem("order")))
   const { cartItems, setCartItems } = useContext(UserContext);
-
+  const { user } = useContext(UserContext);
+  
+  const navigator = useNavigate();
   const [totalPrice, setTotalPrice] = useState(0)
   const [totalPriceWithFee, setTotalPriceWithFee] = useState(0)
 
@@ -16,6 +20,26 @@ export default function Cart({ onclick }) {
   }
 
   useEffect(displayTotalPrice, [cartItems])
+
+  async function closeCart(){
+    try {
+      console.log(user.token);
+        await axios.post("http://localhost:5000/cart",
+        {body:{cartItems}}, {
+        headers: {
+          "Authorization": `Bearer ${user.token}`
+        }
+      });
+
+      alert('enviando para o usuário um email com o pedido');
+      setCartItems([]);
+      navigator("/");
+      
+    } catch (error) {
+      alert("Ops! Infelizmente aconteceu um erro! Tente novamente!");
+      console.log(error);
+    }
+  }
 
   return (
     <ShoppingCart>
@@ -47,10 +71,7 @@ export default function Cart({ onclick }) {
         <div className='wrapper'>
           <StyledButton
             text={'Checkout'}
-            onclick={() => {
-              alert('enviando para o usuário um email com o pedido');
-              setCartItems([]);
-            }}
+            onclick={ closeCart }
           />
           <StyledButton text={'Esvaziar Carrinho'}
             onclick={() => setCartItems([])} />
