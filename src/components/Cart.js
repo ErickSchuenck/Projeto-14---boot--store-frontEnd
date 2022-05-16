@@ -61,7 +61,7 @@ export default function Cart({ onclick }) {
           <h1>Cart</h1>
         </div>
         <div className='user-items'>
-          {cartItems.map((item) => <h1>{item.name}</h1>)}
+          {cartItems.map((item) => <h4>{item.name}</h4>)}
         </div>
       </div>
 
@@ -103,7 +103,6 @@ const ShoppingCart = styled.div`
     color: black;
     font-family: var(--primaryFont);
     font-size: 24px;
-    
   }
   
   h2{
@@ -122,6 +121,14 @@ const ShoppingCart = styled.div`
     font-family: var(--primaryFont);
     font-size: 16px;
     font-weight: 800;
+  }
+
+  h4{
+    margin-left: 15px;
+    padding: 0;
+    color: var(--highlightColorDarker);
+    font-family: var(--primaryFont);
+    font-size: 16px;
   }
 
   .title{

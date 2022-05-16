@@ -6,7 +6,7 @@ import styled from 'styled-components';
 export default function ItemComponent({ item }) {
 
   const { cartItems, setCartItems } = useContext(UserContext);
-  const { value, image, name, id } = item;
+  const { value, image, name, id, description } = item;
   const isSelected = cartItems.filter((i) => i.id === id).length > 0
 
   function selectProductToCart() {
@@ -34,7 +34,7 @@ export default function ItemComponent({ item }) {
         <ComponentDescription>
           <h1>{name}</h1>
           <h2>{isSelected ? 'No carrinho' : 'Comprar'}</h2>
-          <h3>Lorem Ipsum is simply dummy text </h3>
+          <h3>{description}</h3>
         </ComponentDescription>
       </Wrapper >
     </>
@@ -80,7 +80,7 @@ img{
 }
 `
 const ComponentDescription = styled.div`
-  width: 144px;
+  width: 184px;
   height: 144px;
   h1{
     margin: 0;
