@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import LoginScreen from './pages/LoginScreen'
 import RegisterScreen from './pages/RegisterScreen'
 import MainScreen from './pages/MainScreen'
-import Cart from './Cart'
 import UserContext from "../contexts/userContext";
 import ItemComponent from './ItemComponent'
+import MyOrders from "./pages/MyOrders";
 const cartOrderInitialValue = JSON.parse(localStorage.getItem('order')) || [];
 
 
@@ -25,6 +25,7 @@ function App() {
           <Route path='/signUp' element={<RegisterScreen />} />
           <Route path='/' element={<MainScreen />} />
           <Route path='/test' element={<ItemComponent />} />
+          <Route path='/myorders' element={<MyOrders />} />
         </Routes>
       </BrowserRouter>
     </UserContext.Provider>

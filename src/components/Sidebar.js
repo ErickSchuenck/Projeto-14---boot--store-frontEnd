@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export default function sidebar() {
+export default function Sidebar() {
 
   function orderProducts(type) {
     if (type === 'crescent') {
@@ -17,9 +18,11 @@ export default function sidebar() {
 
 
   return (
-    <Sidebar>
+    <SidebarStyle>
       <h1>Ver</h1>
-      <h2>Meus pedidos</h2>
+      <Link to={'/myorders'}>
+        <h2>Meus pedidos</h2>
+      </Link>
       <h1>Ordenar</h1>
       <h2 onClick={() => orderProducts('mostBuys')}>Mais Comprados</h2>
       <h2 onClick={() => orderProducts('crescent')}>Menor preço</h2>
@@ -27,11 +30,11 @@ export default function sidebar() {
       <h1>Minha Conta</h1>
       <h2>Deletar minha conta</h2>
       <h2>Editar minha conta</h2>
-    </Sidebar>
+    </SidebarStyle>
   )
 }
 
-const Sidebar = styled.div`
+const SidebarStyle = styled.div`
   width: 200px;
   height: 100vh;
   background-color: var(--fundo);

@@ -9,7 +9,7 @@ export default function WelcomeHeader() {
 
   return (
     <H1>
-      <h1>Bem vindo {user}</h1>
+      <h1>Bem vindo, {user.name}</h1>
     </H1>
   )
 }

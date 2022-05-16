@@ -24,6 +24,7 @@ export default function MainScreen() {
       value: 199.99,
       name: "Low OG Wang",
       image: './assets/boots/2b.jpg',
+
       id: 2,
       description: 'Designed in  brown, vivid magenta, dark turquoise, and black.',
       timesItWasBought: 10,
@@ -48,6 +49,7 @@ export default function MainScreen() {
       value: 379.99,
       name: "Yard Flex 2023",
       image: './assets/boots/5b.jpg',
+
       id: 5,
       description: 'Made in whitish colors, perfect for jogging',
       timesItWasBought: 0,
@@ -56,6 +58,7 @@ export default function MainScreen() {
       value: 159.99,
       name: "Retro 2019 collection",
       image: './assets/boots/6b.jpg',
+
       id: 6,
       description: 'Made from light gray canvas. It is accented with gold chains.',
       timesItWasBought: 3,
@@ -64,6 +67,7 @@ export default function MainScreen() {
       value: 229.99,
       name: "Flash NF18s",
       image: './assets/boots/7b.jpg',
+
       id: 7,
       description: 'Made from wavy fabric designed in white, and light gray.',
       timesItWasBought: 2,
@@ -72,6 +76,7 @@ export default function MainScreen() {
       value: 149.99,
       name: "Taylor C/19",
       image: './assets/boots/8b.jpg',
+
       id: 8,
       description: 'Made from polka - dotted fabric, has a sporty appearance.',
       timesItWasBought: 0,
@@ -88,6 +93,7 @@ export default function MainScreen() {
       value: 199.99,
       name: "NFs Flex c22",
       image: './assets/boots/10b.jpg',
+
       id: 10,
       description: 'NFs Limited edition 2022',
       timesItWasBought: 4,
