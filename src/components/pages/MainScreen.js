@@ -151,16 +151,6 @@ export default function MainScreen() {
       <Header orderProducts={orderProducts()} />
       <Carousel />
       {user ? <WelcomeHeader /> : <></>}
-
-      {/* ERASE THIS */}
-      <button onClick={() => orderProducts('crescent')}
-      >crescente</button>
-      <button onClick={() => orderProducts('decrescent')}
-      >decrescente</button>
-      <button onClick={() => orderProducts('mostBuys')}
-      >vezes q foi comprado</button>
-      {/* ERASE THIS */}
-
       {
         products.map(product => <ItemComponent
           key={product._id} item={product}

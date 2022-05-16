@@ -1,14 +1,37 @@
-import React from 'react'
+
+import React, { useContext } from 'react';
+import UserContext from "../contexts/userContext";
 import styled from 'styled-components';
+import { useState } from 'react';
 
 
 export default function SearchBar() {
+
+  const { products, setProducts } = useContext(UserContext);
+  const [searchTerm, setSearchTerm] = useState('')
+  function filterProducts() {
+    console.log('filtering')
+    setProducts(products.filter((val) => {
+      if (searchTerm === '') {
+        return val
+      } else {
+        return val.name.toLowerCase().includes(searchTerm.toLowerCase())
+      }
+    }))
+  }
+
   return (
     <Search>
       <div className='search-input'>
-        <input type={'text'} placeholder={'nome do produto'}></input>
+        <input
+          type={'text'}
+          placeholder={'nome do produto'}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
       </div>
-      <ion-icon name="search-outline"></ion-icon>
+      <ion-icon name="search-outline"
+        onClick={filterProducts}
+      />
     </Search>
   )
 }
