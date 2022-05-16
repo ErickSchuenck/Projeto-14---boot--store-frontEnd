@@ -4,6 +4,8 @@ import Header from '../Header'
 import ItemComponent from '../ItemComponent'
 import UserContext from '../../contexts/userContext';
 import axios from 'axios';
+import WelcomeHeader from '../WelcomeHeader.js';
+
 
 export default function MainScreen() {
   const { user, cartItems, setCartItems } = useContext(UserContext);
@@ -49,6 +51,8 @@ export default function MainScreen() {
     <>
       <Header />
       <Carousel />
+      {user ? <WelcomeHeader /> : <></>}
+
       {products.map(product => <ItemComponent
         key={product._id} item={product}
         products={products}
