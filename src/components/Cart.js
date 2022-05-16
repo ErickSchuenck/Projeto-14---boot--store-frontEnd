@@ -25,7 +25,7 @@ export default function Cart({ onclick }) {
     try {
       console.log(user.token);
         await axios.post("http://localhost:5000/cart",
-        {body:{cartItems}}, {
+        {body:{cartItems, totalPriceWithFee}}, {
         headers: {
           "Authorization": `Bearer ${user.token}`
         }

@@ -28,6 +28,7 @@ export default function MyOrders() {
 
     return (
         <Container>
+
             <Link to={'/'}>
                 <div className='link-text'>
                     <p>Retornar ao Site</p>
@@ -44,4 +45,11 @@ const Container = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
+  .link-text{
+    margin-bottom: 10px;
+  }
+  .link-text p{
+    font-family: var(--primaryFont);
+    color: var(--highlightColorDarker);
+  }
 `
