@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import UserContext from "../contexts/userContext";
 import styled from 'styled-components';
+import axios from 'axios';
 
 export default function Sidebar() {
 
   const { products, setProducts } = useContext(UserContext);
-  const {user} = useContext(UserContext);
+  const {user, setUser} = useContext(UserContext);
+  const navigator = useNavigate();
 
   function orderProducts(type) {
     if (type === 'crescent') {
@@ -17,6 +19,25 @@ export default function Sidebar() {
     }
     if (type === 'mostBuys') {
       setProducts([...products.sort((a, b) => b.timesItWasBought - a.timesItWasBought)])
+    }
+  }
+
+  async function deleteAccount(){
+    if(!window.confirm('Tem certeza que quer deletar a conta?')) return;
+    try {
+        await axios.delete("https://flexstore-back.herokuapp.com/sign-up", {
+        headers: {
+          "Authorization": `Bearer ${user.token}`
+        }
+      });
+
+      alert('Conta deletada com sucesso!');
+      setUser('');
+      navigator("/");
+      
+    } catch (error) {
+      alert("Ops! Infelizmente aconteceu um erro! Tente novamente!");
+      console.log(error);
     }
   }
 
@@ -37,8 +58,7 @@ export default function Sidebar() {
       <h2 onClick={() => orderProducts('crescent')}>Menor preço</h2>
       <h2 onClick={() => orderProducts('decrescent')}>Maior preço</h2>
       <h1>Minha Conta</h1>
-      <h2>Deletar minha conta</h2>
-      <h2>Editar minha conta</h2>
+      <h2 onClick={deleteAccount}>Deletar minha conta</h2>
     </SidebarStyle>
   )
 }

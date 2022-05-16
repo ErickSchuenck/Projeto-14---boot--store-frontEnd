@@ -27,8 +27,7 @@ export default function LoginScreen() {
   )
 
   //functions
-  async function enterApp(e) {
-    e.preventDefault();
+  async function enterApp() {
     try {
       const response = await axios.post("https://flexstore-back.herokuapp.com/sign-in", login);
 
@@ -42,8 +41,7 @@ export default function LoginScreen() {
     }
   }
 
-  async function logOut(e){
-    e.preventDefault();
+  async function logOut(){
     try {
         await axios.get("https://flexstore-back.herokuapp.com/sign-out", {
         headers: {
@@ -53,6 +51,25 @@ export default function LoginScreen() {
 
       setUser('');
       setLoading(!loading);
+      navigator("/");
+      
+    } catch (error) {
+      alert("Ops! Infelizmente aconteceu um erro! Tente novamente!");
+      console.log(error);
+    }
+  }
+
+  async function deleteAccount(){
+    if(!window.confirm('Tem certeza que quer deletar a conta?')) return;
+    try {
+        await axios.delete("https://flexstore-back.herokuapp.com/sign-up", {
+        headers: {
+          "Authorization": `Bearer ${user.token}`
+        }
+      });
+
+      alert('Conta deletada com sucesso!');
+      setUser('');
       navigator("/");
       
     } catch (error) {
@@ -127,8 +144,8 @@ export default function LoginScreen() {
   ):(
     <Container>
       <h1>Olá, {user.name}</h1>
-      <button>Deletar minha conta</button>
-      <button>Editar minha conta</button>
+      <button onClick={deleteAccount}>Deletar minha conta</button>
+      
       <button onClick={logOut}>Sair</button>
       <Link to={'/'}>
         <div className='link-text'>

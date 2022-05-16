@@ -27,6 +27,10 @@ export default function Cart({ onclick }) {
       navigator('/login');
       return;
     }
+    if(cartItems.length === 0){
+      alert('Não tem nada no carrinho!');
+      return;
+    }
     try {
       await axios.post("https://flexstore-back.herokuapp.com/cart",
         { body: { cartItems, totalPriceWithFee } }, {
@@ -35,7 +39,7 @@ export default function Cart({ onclick }) {
         }
       });
 
-      alert('enviando para o usuário um email com o pedido');
+      alert('Enviando o pedido');
       setCartItems([]);
       navigator("/");
 
