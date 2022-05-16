@@ -7,10 +7,11 @@ import { useState } from 'react';
 
 export default function SearchBar() {
 
-  const { products, setProducts } = useContext(UserContext);
+  const { products, setProducts, productsInitialList } = useContext(UserContext);
   const [searchTerm, setSearchTerm] = useState('')
+
+
   function filterProducts() {
-    console.log('filtering')
     setProducts(products.filter((val) => {
       if (searchTerm === '') {
         return val
@@ -18,6 +19,10 @@ export default function SearchBar() {
         return val.name.toLowerCase().includes(searchTerm.toLowerCase())
       }
     }))
+  }
+
+  function resetFilterProducts() {
+    setProducts([...productsInitialList])
   }
 
   return (
@@ -31,6 +36,9 @@ export default function SearchBar() {
       </div>
       <ion-icon name="search-outline"
         onClick={filterProducts}
+      />
+      <ion-icon name="reload-outline"
+        onClick={resetFilterProducts}
       />
     </Search>
   )
