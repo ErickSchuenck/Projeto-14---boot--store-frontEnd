@@ -2,15 +2,27 @@ import React from 'react'
 import styled from 'styled-components';
 
 export default function sidebar() {
+
+  function orderProducts(type) {
+    if (type === 'crescent') {
+      console.log('crescent')
+      // setProducts(products.value.sort((a, b) => a - b))
+    }
+    if (type === 'decrescent') {
+      console.log('decrescent')
+      // setProducts(products.value.sort((a, b) => a - b))
+    }
+
+  }
+
+
   return (
     <Sidebar>
       <h1>Ver</h1>
       <h2>Meus pedidos</h2>
       <h1>Ordenar</h1>
-      <h2>Menor preço</h2>
-      <h2>Maior preço</h2>
-      <h2>Mais novos</h2>
-      <h2>Mais comprados</h2>
+      <h2 onClick={() => orderProducts('crescent')}>Menor preço</h2>
+      <h2 onClick={() => orderProducts('decrescent')}>Maior preço</h2>
       <h1>Minha Conta</h1>
       <h2>Deletar minha conta</h2>
       <h2>Editar minha conta</h2>

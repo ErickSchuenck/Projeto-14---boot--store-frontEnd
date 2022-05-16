@@ -14,6 +14,9 @@ function App() {
   const [user, setUser] = useState(null);
   const [cartItems, setCartItems] = useState(cartOrderInitialValue);
   useEffect(() => localStorage.setItem("order", JSON.stringify(cartItems)), [cartItems])
+
+
+
   return (
     <UserContext.Provider value={{ user, setUser, cartItems, setCartItems }}>
       <BrowserRouter>
