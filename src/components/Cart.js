@@ -24,7 +24,7 @@ export default function Cart({ onclick }) {
   async function closeCart(){
     try {
       console.log(user.token);
-        await axios.post("http://localhost:5000/cart",
+        await axios.post("https://git.heroku.com/flexstore-back.git/cart",
         {body:{cartItems, totalPriceWithFee}}, {
         headers: {
           "Authorization": `Bearer ${user.token}`
