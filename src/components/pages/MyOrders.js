@@ -18,7 +18,7 @@ export default function MyOrders() {
                 }
                 );
                 setMyOrders(request.data);
-                
+
             } catch (error) {
                 alert("Ops! Infelizmente aconteceu um erro! Tente novamente!");
                 console.log(error);
@@ -28,22 +28,22 @@ export default function MyOrders() {
 
     return (
         <Container>
-            {myOrders.length>0?(
+            {myOrders.length > 0 ? (
                 myOrders.map((order, index) => {
                     console.log(order);
                     return (<div>
                         {/* NUMERO DO PEDIDO BASEADO NO MAP */}
-                        <h4>Pedido {index+1}</h4>
+                        <h4>Pedido {index + 1}</h4>
                         {/* CADA PEDIDO POSSUI UMA PARTE CHAMACA cartItem QUE POSSUI 
                         TODAS AS INFORMAÇOES DOS PRODUTOS COMPRADOS */}
                         <h4>Quantidade de produtos: {order.cartItems.length}</h4>
                         {/* VALOR TOTAL DO PEDIDO */}
                         <h4>Valor do pedido: {order.totalPrice}</h4>
                     </div>)
-                    }
+                }
                 )
-            ):(
-                 <h1>Não foi feito nenhum pedido</h1>
+            ) : (
+                <h1>Não foi feito nenhum pedido</h1>
             )}
             <Link to={'/'}>
                 <div className='link-text'>
@@ -61,6 +61,10 @@ const Container = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
+  h1{
+    font-family: var(--primaryFont);
+  }
+  
   .link-text{
     margin-bottom: 10px;
   }
