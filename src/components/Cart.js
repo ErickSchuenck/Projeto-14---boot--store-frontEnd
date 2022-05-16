@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Cart({ onclick }) {
   const { cartItems, setCartItems } = useContext(UserContext);
   const { user } = useContext(UserContext);
-  
+
   const navigator = useNavigate();
   const [totalPrice, setTotalPrice] = useState(0)
   const [totalPriceWithFee, setTotalPriceWithFee] = useState(0)
@@ -20,15 +20,16 @@ export default function Cart({ onclick }) {
 
   useEffect(displayTotalPrice, [cartItems])
 
-  async function closeCart(){
+
+  async function closeCart() {
     if(!user){
       alert('Entre antes de efetuar a compra!');
       navigator('/login');
       return;
     }
     try {
-        await axios.post("https://flexstore-back.herokuapp.com/cart",
-        {body:{cartItems, totalPriceWithFee}}, {
+      await axios.post("https://flexstore-back.herokuapp.com/cart",
+        { body: { cartItems, totalPriceWithFee } }, {
         headers: {
           "Authorization": `Bearer ${user.token}`
         }
@@ -37,7 +38,7 @@ export default function Cart({ onclick }) {
       alert('enviando para o usuário um email com o pedido');
       setCartItems([]);
       navigator("/");
-      
+
     } catch (error) {
       alert("Ops! Infelizmente aconteceu um erro! Tente novamente!");
       console.log(error);
@@ -74,7 +75,7 @@ export default function Cart({ onclick }) {
         <div className='wrapper'>
           <StyledButton
             text={'Checkout'}
-            onclick={ closeCart }
+            onclick={closeCart}
           />
           <StyledButton text={'Esvaziar Carrinho'}
             onclick={() => setCartItems([])} />
@@ -85,7 +86,8 @@ export default function Cart({ onclick }) {
           <h1>Cart</h1>
         </div>
         <div className='user-items'>
-          {cartItems.map((item) => <h4>{item.name}</h4>)}
+          {cartItems.map((item) => <><h4>{item.name}</h4>
+            <h2>{item.value}</h2></>)}
         </div>
       </div>
 
@@ -103,6 +105,7 @@ const ShoppingCart = styled.div`
   .user-items{
     height: 100%;
     width: 100%;
+    margin-left: 15px;
   }
   .title-cart{
     width: 100%;
@@ -148,11 +151,12 @@ const ShoppingCart = styled.div`
   }
 
   h4{
-    margin-left: 15px;
     padding: 0;
     color: var(--highlightColorDarker);
     font-family: var(--primaryFont);
     font-size: 16px;
+    margin: 0;
+    margin-top: 14px;
   }
 
   .title{
