@@ -5,14 +5,14 @@ export default function sidebar() {
 
   function orderProducts(type) {
     if (type === 'crescent') {
-      console.log('crescent')
-      // setProducts(products.value.sort((a, b) => a - b))
+      setProducts([...products.sort((a, b) => a.value - b.value)])
     }
     if (type === 'decrescent') {
-      console.log('decrescent')
-      // setProducts(products.value.sort((a, b) => a - b))
+      setProducts([...products.sort((a, b) => b.value - a.value)])
     }
-
+    if (type === 'mostBuys') {
+      setProducts([...products.sort((a, b) => b.timesItWasBought - a.timesItWasBought)])
+    }
   }
 
 
@@ -21,6 +21,7 @@ export default function sidebar() {
       <h1>Ver</h1>
       <h2>Meus pedidos</h2>
       <h1>Ordenar</h1>
+      <h2 onClick={() => orderProducts('mostBuys')}>Mais Comprados</h2>
       <h2 onClick={() => orderProducts('crescent')}>Menor preço</h2>
       <h2 onClick={() => orderProducts('decrescent')}>Maior preço</h2>
       <h1>Minha Conta</h1>
