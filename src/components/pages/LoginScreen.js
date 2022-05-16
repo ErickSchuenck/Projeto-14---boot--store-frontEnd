@@ -44,6 +44,26 @@ export default function LoginScreen() {
     }
   }
 
+  async function logOut(e){
+    e.preventDefault();
+    try {
+        await axios.get("http://localhost:5000/sign-out", {
+        headers: {
+          "Authorization": `Bearer ${user.token}`
+        }
+      });
+
+      setUser('');
+      console.log(user);
+      setLoading(!loading);
+      navigator("/");
+      
+    } catch (error) {
+      alert("Ops! Infelizmente aconteceu um erro! Tente novamente!");
+      console.log(error);
+    }
+  }
+
   // function enterApp() {
   //   setLoading(!loading)
   //   console.log(login)
@@ -85,7 +105,7 @@ export default function LoginScreen() {
 
   // componentes principais
 
-  return (
+  return !user? (
     <Container>
       <img
         src='./assets/logo-without-background.png' alt='logo' />
@@ -108,6 +128,18 @@ export default function LoginScreen() {
           <p>Primeira vez? Cadastre-se!</p>
         </div>
       </Link>
+      <Link to={'/'}>
+        <div className='link-text'>
+          <p>Retornar ao Site</p>
+        </div>
+      </Link>
+    </Container>
+  ):(
+    <Container>
+      <h1>Olá, {user.name}</h1>
+      <button>Deletar minha conta</button>
+      <button>Editar minha conta</button>
+      <button onClick={logOut}>Sair</button>
       <Link to={'/'}>
         <div className='link-text'>
           <p>Retornar ao Site</p>
