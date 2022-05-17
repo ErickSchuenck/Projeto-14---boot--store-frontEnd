@@ -28,23 +28,27 @@ export default function MyOrders() {
 
     return (
         <Container>
-            {myOrders.length > 0 ? (
-                myOrders.map((order, index) => {
-                    console.log(order);
-                    return (<div>
-                        {/* NUMERO DO PEDIDO BASEADO NO MAP */}
-                        <h4>Pedido {index + 1}</h4>
-                        {/* CADA PEDIDO POSSUI UMA PARTE CHAMACA cartItem QUE POSSUI 
+            <OrderList>
+                {myOrders.length > 0 ? (
+                    myOrders.map((order, index) => {
+                        console.log(order);
+                        return (
+                            <Order>
+                                {/* NUMERO DO PEDIDO BASEADO NO MAP */}
+                                <h1>Pedido {index + 1}</h1>
+                                {/* CADA PEDIDO POSSUI UMA PARTE CHAMACA cartItem QUE POSSUI 
                         TODAS AS INFORMAÇOES DOS PRODUTOS COMPRADOS */}
-                        <h4>Quantidade de produtos: {order.cartItems.length}</h4>
-                        {/* VALOR TOTAL DO PEDIDO */}
-                        <h4>Valor do pedido: {order.totalPrice}</h4>
-                    </div>)
-                }
-                )
-            ) : (
-                <h1>Não foi feito nenhum pedido</h1>
-            )}
+                                <h3>Quantidade de produtos: {order.cartItems.length}</h3>
+
+                                {/* VALOR TOTAL DO PEDIDO */}
+                                <h2>Valor do pedido: {order.totalPrice}</h2>
+                            </Order>)
+                    }
+                    )
+                ) : (
+                    <h1>Não foi feito nenhum pedido</h1>
+                )}
+            </OrderList>
             <Link to={'/'}>
                 <div className='link-text'>
                     <p>Retornar ao Site</p>
@@ -66,7 +70,9 @@ const Container = styled.div`
   }
   
   .link-text{
+      margin-top: 20px;
     margin-bottom: 10px;
+    font-size: 20px;
   }
   .link-text p{
     font-family: var(--primaryFont);
@@ -75,4 +81,39 @@ const Container = styled.div`
   h4{
       font-size: 15px;
   }
+`
+
+const Order = styled.div`
+    min-height: 100px;
+    text-align: center;
+    margin-bottom: 30px;
+    h1{
+    margin: 0;
+    padding: 3px;
+    font-family: var(--primaryFont);
+    font-size: 25px;
+    border-bottom: 1px solid gray;
+    }
+    h2{
+    font-family: var(--primaryFont);
+    padding: 3px;
+    margin: 0;
+    font-size: 14px;
+    color: var(--highlightColorDarker);
+    }
+    h3{
+    font-family: var(--primaryFont);
+    padding: 3px;
+    margin: 0;
+    font-size: 14px;
+    }
+`
+
+const OrderList = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 650px;
+    width: 400px;
+    overflow: scroll;
 `
